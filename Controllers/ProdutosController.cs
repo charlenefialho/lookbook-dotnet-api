@@ -32,13 +32,22 @@ namespace lookbook_dotnet_api.Controllers
             return CreatedAtAction(nameof(GetProdutos), new { id = produto.Id }, produto);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateProduto([FromBody] Produto produto)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateProduto(int id, [FromBody] Produto produto)
         {
-            if (produto == null) return BadRequest();
-            await _produtoRepository.UpdateAsync(produto);
+            if (produto == null || id != produto.Id) return BadRequest();
+
+            var produtoToUpdate = await _produtoRepository.GetByIdAsync(id);
+            if (produtoToUpdate == null) return NotFound();
+
+            produtoToUpdate.Nome = produto.Nome;
+            produtoToUpdate.Categoria = produto.Categoria;
+            // Atualizar outros campos necessários
+
+            await _produtoRepository.UpdateAsync(produtoToUpdate);
             return NoContent();
         }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduto(int id)
