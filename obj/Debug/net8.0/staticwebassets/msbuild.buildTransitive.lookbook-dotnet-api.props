@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\lookbook-dotnet-api.props" />
+</Project>

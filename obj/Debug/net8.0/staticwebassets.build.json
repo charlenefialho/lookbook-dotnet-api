@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "2nOju8i5Dk3FQNW2qowhRaIg+CAeDYnR9bdreKyiMWk=",
+  "Source": "lookbook-dotnet-api",
+  "BasePath": "_content/lookbook-dotnet-api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

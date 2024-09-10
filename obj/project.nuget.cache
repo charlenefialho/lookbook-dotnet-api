@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "809CNySw8Eq46yq2x3DxXPtKpKZg5l8ROaIR0f4aS7E+I0mpKPtAa1iDj9IpWvv2sl3XHy5eAZror3GrlRqHTw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\fialh\\Desktop\\fiap_segundo_semestre\\sprint-3\\dotnet\\lookbook-dotnet-api\\lookbook-dotnet-api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fialh\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.2\\microsoft.aspnetcore.openapi.8.0.2.nupkg.sha512",
+    "C:\\Users\\fialh\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\fialh\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\fialh\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\fialh\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\fialh\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\fialh\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
