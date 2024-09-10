@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace lookbook_dotnet_api.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class ChangeDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,7 +17,9 @@ namespace lookbook_dotnet_api.Migrations
                 {
                     Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
                         .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
-                    Nome = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false)
+                    Nome = table.Column<string>(type: "NVARCHAR2(100)", maxLength: 100, nullable: false),
+                    Descricao = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
+                    DataCriacao = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,9 +32,9 @@ namespace lookbook_dotnet_api.Migrations
                 {
                     Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
                         .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
-                    Nome = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    Preco = table.Column<double>(type: "BINARY_DOUBLE", nullable: false),
-                    Tags = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false)
+                    Nome = table.Column<string>(type: "NVARCHAR2(100)", maxLength: 100, nullable: false),
+                    CategoriaId = table.Column<int>(type: "NUMBER(10)", nullable: false),
+                    Categoria = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,30 +45,30 @@ namespace lookbook_dotnet_api.Migrations
                 name: "LookbookProduto",
                 columns: table => new
                 {
-                    LookbookId = table.Column<int>(type: "NUMBER(10)", nullable: false),
-                    ProdutoId = table.Column<int>(type: "NUMBER(10)", nullable: false)
+                    LookbooksId = table.Column<int>(type: "NUMBER(10)", nullable: false),
+                    ProdutosId = table.Column<int>(type: "NUMBER(10)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LookbookProduto", x => new { x.LookbookId, x.ProdutoId });
+                    table.PrimaryKey("PK_LookbookProduto", x => new { x.LookbooksId, x.ProdutosId });
                     table.ForeignKey(
-                        name: "FK_LookbookProduto_Lookbooks_LookbookId",
-                        column: x => x.LookbookId,
+                        name: "FK_LookbookProduto_Lookbooks_LookbooksId",
+                        column: x => x.LookbooksId,
                         principalTable: "Lookbooks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LookbookProduto_Produtos_ProdutoId",
-                        column: x => x.ProdutoId,
+                        name: "FK_LookbookProduto_Produtos_ProdutosId",
+                        column: x => x.ProdutosId,
                         principalTable: "Produtos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_LookbookProduto_ProdutoId",
+                name: "IX_LookbookProduto_ProdutosId",
                 table: "LookbookProduto",
-                column: "ProdutoId");
+                column: "ProdutosId");
         }
 
         /// <inheritdoc />

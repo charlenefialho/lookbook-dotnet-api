@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace lookbook_dotnet_api.models
 {
@@ -12,16 +16,9 @@ namespace lookbook_dotnet_api.models
         [StringLength(100)]
         public string Nome { get; set; }
 
-        [Required]
-        public Categoria Categoria { get; set; }
-    }
+        public string Categoria { get; set; }
 
-    public enum Categoria
-    {
-        Acessorio,
-        Camisa,
-        Sapato,
-        Outro
+        public ICollection<Lookbook> Lookbooks { get; set; } = new List<Lookbook>();
     }
 
 }

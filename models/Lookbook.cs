@@ -20,6 +20,4 @@ namespace lookbook_dotnet_api.models
 
         public ICollection<Produto> Produtos { get; set; } = new List<Produto>();
     }
-
-
 }
