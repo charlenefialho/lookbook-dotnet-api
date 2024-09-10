@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using lookbook_dotnet_api.models;
 using lookbook_dotnet_api.services;
 using Microsoft.AspNetCore.Mvc;
+using lookbook_dotnet_api.DTO;
 
 namespace lookbook_dotnet_api.controllers
 {
@@ -41,27 +42,26 @@ namespace lookbook_dotnet_api.controllers
 
         // POST: api/Lookbook
         [HttpPost]
-        public async Task<ActionResult<Lookbook>> PostLookbook(Lookbook lookbook)
+        [HttpPost]
+        public async Task<ActionResult<Lookbook>> PostLookbook([FromBody] LookbookCreateDto lookbookDto)
         {
-            // Inicializa a coleção se for nula
-            if (lookbook.LookbookProdutos == null)
+            // Criar um novo Lookbook
+            var lookbook = new Lookbook
             {
-                lookbook.LookbookProdutos = new List<LookbookProduto>();
-            }
-
-            // Valida os produtos associados
-            foreach (var lp in lookbook.LookbookProdutos)
-            {
-                if (lp.ProdutoId <= 0)
+                Nome = lookbookDto.Nome,
+                LookbookProdutos = lookbookDto.ProdutoIds.Select(produtoId => new LookbookProduto
                 {
-                    ModelState.AddModelError("LookbookProdutos", "ProdutoId deve ser um valor válido.");
-                    return BadRequest(ModelState);
-                }
-            }
+                    ProdutoId = produtoId
+                }).ToList()
+            };
 
+            // Criar o Lookbook no serviço
             await _lookbookService.Create(lookbook);
             return CreatedAtAction(nameof(GetLookbook), new { id = lookbook.Id }, lookbook);
         }
+
+
+
 
 
         // PUT: api/Lookbook/5

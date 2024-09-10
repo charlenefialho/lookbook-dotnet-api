@@ -20,7 +20,10 @@ namespace lookbook_dotnet_api.services
         // Listar todos os lookbooks
         public async Task<IEnumerable<Lookbook>> GetAll()
         {
-            return await _context.Lookbooks.Include(lb => lb.LookbookProdutos).ThenInclude(lp => lp.Produto).ToListAsync();
+            return await _context.Lookbooks
+                .Include(lb => lb.LookbookProdutos)
+                .ThenInclude(lp => lp.Produto)
+                .ToListAsync();
         }
 
         // Obter lookbook por ID
@@ -32,27 +35,41 @@ namespace lookbook_dotnet_api.services
                 .FirstOrDefaultAsync(lb => lb.Id == id);
         }
 
+
+
         // Criar novo lookbook
         public async Task Create(Lookbook lookbook)
         {
+            // Adicionar o lookbook ao contexto
             _context.Lookbooks.Add(lookbook);
             await _context.SaveChangesAsync();
 
+            // Adicionar as associações LookbookProduto sem criar duplicatas
             if (lookbook.LookbookProdutos != null)
             {
                 foreach (var produtoId in lookbook.LookbookProdutos.Select(lp => lp.ProdutoId).Distinct())
                 {
-                    var lookbookProduto = new LookbookProduto
+                    var existingEntry = await _context.LookbookProdutos
+                        .Where(lp => lp.LookbookId == lookbook.Id && lp.ProdutoId == produtoId)
+                        .FirstOrDefaultAsync();
+
+                    if (existingEntry == null)
                     {
-                        LookbookId = lookbook.Id,
-                        ProdutoId = produtoId
-                    };
-                    _context.LookbookProdutos.Add(lookbookProduto);
+                        var lookbookProduto = new LookbookProduto
+                        {
+                            LookbookId = lookbook.Id,
+                            ProdutoId = produtoId
+                        };
+                        _context.LookbookProdutos.Add(lookbookProduto);
+                    }
                 }
 
                 await _context.SaveChangesAsync();
             }
         }
+
+
+
 
         // Atualizar lookbook existente
         public async Task Update(Lookbook lookbook)
