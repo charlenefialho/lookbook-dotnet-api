@@ -10,6 +10,9 @@ namespace lookbook_dotnet_api.models
         public int Id { get; set; }
         public string Nome { get; set; }
         public double Preco { get; set; }
+
+        public ICollection<LookbookProduto> LookbookProdutos { get; set; } = new List<LookbookProduto>();
+
         public List<string> Tags { get; set; } // Tags como lista de strings
     }
 }
