@@ -1,0 +1,88 @@
+# Logs
+logs
+*.log
+*.log*
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.generated.cs
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]*/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# NuGet
+*.nupkg
+# The packages folder can be ignored, but may be kept for libraries
+**/[Pp]ackages/*
+# Uncomment if necessary to ignore the globally-installed packages folder
+# .nuget/packages
+# Uncomment if necessary to ignore package target files
+# *.targets
+
+# Visual Studio 2019/2022 cache/options directory
+.vscode/
+.vs/
+.vscode/settings.json
+
+# Rider projects
+.idea/
+
+# Local history for Visual Studio
+.vs/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# StyleCop
+StyleCopReport.xml
+
+# TeamCity
+_TeamCity/
+
+# DotNet
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Core SignalR
+*.db
+*.sqlite
+
+# Entity Framework
+*.edmx
+*.tt
+
+# Azure App Service files
+.localhistory/
+
+# Web servers
+wwwroot/
+node_modules/
+
+# Others
+.vscode/
+.env
+docker-compose.override.yml
