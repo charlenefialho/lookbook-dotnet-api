@@ -13,6 +13,7 @@ namespace lookbook_dotnet_api.models
         [StringLength(100)]
         public string Nome { get; set; }
 
+        [Required]
         public string Descricao { get; set; }
 
         [Required]

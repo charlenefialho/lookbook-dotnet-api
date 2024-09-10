@@ -16,6 +16,7 @@ namespace lookbook_dotnet_api.models
         [StringLength(100)]
         public string Nome { get; set; }
 
+        [Required]
         public string Categoria { get; set; }
 
         public ICollection<Lookbook> Lookbooks { get; set; } = new List<Lookbook>();
