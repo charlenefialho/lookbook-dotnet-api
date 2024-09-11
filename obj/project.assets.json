@@ -9937,24 +9937,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fialh\\.nuget\\packages\\": {}
+    "C:\\Softwares\\Nuget": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fialh\\Desktop\\fiap_segundo_semestre\\sprint-3\\dotnet\\lookbook-dotnet-api\\lookbook-dotnet-api.csproj",
+      "projectUniqueName": "C:\\Users\\labsfiap\\lookbook-dotnet-api\\lookbook-dotnet-api.csproj",
       "projectName": "lookbook-dotnet-api",
-      "projectPath": "C:\\Users\\fialh\\Desktop\\fiap_segundo_semestre\\sprint-3\\dotnet\\lookbook-dotnet-api\\lookbook-dotnet-api.csproj",
-      "packagesPath": "C:\\Users\\fialh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fialh\\Desktop\\fiap_segundo_semestre\\sprint-3\\dotnet\\lookbook-dotnet-api\\obj\\",
+      "projectPath": "C:\\Users\\labsfiap\\lookbook-dotnet-api\\lookbook-dotnet-api.csproj",
+      "packagesPath": "C:\\Softwares\\Nuget",
+      "outputPath": "C:\\Users\\labsfiap\\lookbook-dotnet-api\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\fialh\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "c:\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -10032,7 +10040,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

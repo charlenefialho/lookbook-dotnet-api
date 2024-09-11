@@ -1,16 +1,16 @@
-using Microsoft.EntityFrameworkCore;
 using lookbook_dotnet_api.data;
 using lookbook_dotnet_api.models;
-using Microsoft.Extensions.DependencyInjection;
 using lookbook_dotnet_api.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
 // Configuração do DbContext para Oracle
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseOracle(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseOracle(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 // Registrar o repositório genérico
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -19,7 +19,32 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddControllers();
 builder.Services.AddAuthorization(); // Registra o serviço de autorização
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc(
+        "v1",
+        new OpenApiInfo
+        {
+            Title = "Lookbook API",
+            Version = "v1",
+            Description = "API para gerenciar lookbooks e produtos",
+            Contact = new OpenApiContact
+            {
+                Name = "Seu Nome",
+                Email = "email@dominio.com",
+                Url = new Uri("https://seuwebsite.com"),
+            },
+            License = new OpenApiLicense
+            {
+                Name = "Licença de Uso",
+                Url = new Uri("https://seuwebsite.com/licenca"),
+            },
+        }
+    );
+
+    // Adicionando descrições para os modelos
+    c.EnableAnnotations();
+});
 
 var app = builder.Build();
 
@@ -33,7 +58,11 @@ using (var scope = app.Services.CreateScope())
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Lookbook API v1");
+        c.RoutePrefix = string.Empty; // Define a página inicial do Swagger como a raiz do app
+    });
 }
 
 app.UseHttpsRedirection();
