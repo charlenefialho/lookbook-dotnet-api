@@ -1,26 +1,26 @@
-# lookbook dotnet api
+# 🎨 lookbook dotnet api
 
 
-### Descrição do Projeto
+### 📖Descrição do Projeto
 A Lookbook API é uma aplicação web desenvolvida com .NET 8.0 para gerenciar lookbooks e produtos, permitindo criar, listar, atualizar e excluir lookbooks e produtos. A API permite a associação de produtos a lookbooks e suporta uma relação N:N, onde um lookbook pode conter vários produtos, e um produto pode estar em vários lookbooks.
 
 A aplicação utiliza um banco de dados Oracle para armazenamento dos dados e segue o padrão Repository para a separação da lógica de acesso aos dados.
 
 
-### Arquitetura
+### 🏛️ Arquitetura
 Este projeto adota uma arquitetura monolítica com camadas bem definidas:
 
-- **Camada de Apresentação (Controllers):** Responsável por expor os endpoints da API e tratar as requisições HTTP.
-- **Camada de Repositório:** Realiza o acesso aos dados e implementa os métodos de CRUD utilizando o padrão Repository.
-- **Camada de Modelos:** Define as entidades que representam os dados manipulados pela API (como Lookbook e Produto).
+- **Camada de Apresentação (Controllers):** Responsável por expor os endpoints da API e tratar as requisições HTTP. 🌐
+- **Camada de Repositório:** Realiza o acesso aos dados e implementa os métodos de CRUD utilizando o padrão Repository. 📂
+- **Camada de Modelos:** Define as entidades que representam os dados manipulados pela API (como Lookbook e Produto). 📊
 
 
-### Padrões de Design Utilizados
+### 🔧 Padrões de Design Utilizados
 1. **Repository Pattern:**
 O padrão Repository é usado para isolar a lógica de acesso ao banco de dados da lógica de negócios. Isso facilita a manutenção, testes e futuras alterações no acesso aos dados.
 
 
-### Tecnologias Utilizadas
+### 🛠️ Tecnologias Utilizadas
 - .NET 8.0: Framework de desenvolvimento.
 - Entity Framework Core: ORM para mapear as entidades com o banco de dados Oracle.
 - Oracle: Banco de dados relacional utilizado para armazenar os dados.
@@ -84,7 +84,7 @@ Acessar a Documentação acesse a interface do Swagger para testar os endpoints:
 https://localhost:<porta>/swagger
 ```
 
-### Integrantes do grupo
+### 👥 Integrantes do grupo
 <table>
   <tr>
         <td align="center">
