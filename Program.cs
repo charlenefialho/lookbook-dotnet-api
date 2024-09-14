@@ -2,7 +2,6 @@ using lookbook_dotnet_api.data;
 using lookbook_dotnet_api.models;
 using lookbook_dotnet_api.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +20,9 @@ builder.Services.AddAuthorization(); // Registra o serviço de autorização
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
+    // Adicionando descrições para os modelos
+    c.EnableAnnotations();
+
     c.SwaggerDoc(
         "v1",
         new OpenApiInfo
@@ -42,8 +44,7 @@ builder.Services.AddSwaggerGen(c =>
         }
     );
 
-    // Adicionando descrições para os modelos
-    c.EnableAnnotations();
+
 });
 
 var app = builder.Build();

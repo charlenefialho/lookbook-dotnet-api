@@ -1555,7 +1555,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.OpenApi/1.6.14": {
+      "Microsoft.OpenApi/1.6.21": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
@@ -1905,6 +1905,22 @@
         },
         "build": {
           "build/Swashbuckle.AspNetCore.props": {}
+        }
+      },
+      "Swashbuckle.AspNetCore.Annotations/6.7.3": {
+        "type": "package",
+        "dependencies": {
+          "Swashbuckle.AspNetCore.SwaggerGen": "6.7.3"
+        },
+        "compile": {
+          "lib/net8.0/Swashbuckle.AspNetCore.Annotations.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Swashbuckle.AspNetCore.Annotations.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "Swashbuckle.AspNetCore.Swagger/6.7.3": {
@@ -5505,10 +5521,10 @@
         "runtime.json"
       ]
     },
-    "Microsoft.OpenApi/1.6.14": {
-      "sha512": "tTaBT8qjk3xINfESyOPE2rIellPvB7qpVqiWiyA/lACVvz+xOGiXhFUfohcx82NLbi5avzLW0lx+s6oAqQijfw==",
+    "Microsoft.OpenApi/1.6.21": {
+      "sha512": "QbnoGsWqn4AM50seOUcfV01PkWA+Mz0dQ2FjGnzTRJ1+svX4BcT1IqylZTSvl5d3v7ZMkii55yhtJB1bA6bhXg==",
       "type": "package",
-      "path": "microsoft.openapi/1.6.14",
+      "path": "microsoft.openapi/1.6.21",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5516,7 +5532,7 @@
         "lib/netstandard2.0/Microsoft.OpenApi.dll",
         "lib/netstandard2.0/Microsoft.OpenApi.pdb",
         "lib/netstandard2.0/Microsoft.OpenApi.xml",
-        "microsoft.openapi.1.6.14.nupkg.sha512",
+        "microsoft.openapi.1.6.21.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
     },
@@ -5936,6 +5952,36 @@
         "build/Swashbuckle.AspNetCore.props",
         "swashbuckle.aspnetcore.6.7.3.nupkg.sha512",
         "swashbuckle.aspnetcore.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore.Annotations/6.7.3": {
+      "sha512": "u/s7QGkpgViqpXwHZ28vsSG+/HDP1i9ALgVhi9Jm7dTlUoIS5edSYE5AQIId3g/fLJi0xbNmaTCdzz+ZNnThYw==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.annotations/6.7.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net5.0/Swashbuckle.AspNetCore.Annotations.dll",
+        "lib/net5.0/Swashbuckle.AspNetCore.Annotations.pdb",
+        "lib/net5.0/Swashbuckle.AspNetCore.Annotations.xml",
+        "lib/net6.0/Swashbuckle.AspNetCore.Annotations.dll",
+        "lib/net6.0/Swashbuckle.AspNetCore.Annotations.pdb",
+        "lib/net6.0/Swashbuckle.AspNetCore.Annotations.xml",
+        "lib/net7.0/Swashbuckle.AspNetCore.Annotations.dll",
+        "lib/net7.0/Swashbuckle.AspNetCore.Annotations.pdb",
+        "lib/net7.0/Swashbuckle.AspNetCore.Annotations.xml",
+        "lib/net8.0/Swashbuckle.AspNetCore.Annotations.dll",
+        "lib/net8.0/Swashbuckle.AspNetCore.Annotations.pdb",
+        "lib/net8.0/Swashbuckle.AspNetCore.Annotations.xml",
+        "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Annotations.dll",
+        "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Annotations.pdb",
+        "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Annotations.xml",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.Annotations.dll",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.Annotations.pdb",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.Annotations.xml",
+        "package-readme.md",
+        "swashbuckle.aspnetcore.annotations.6.7.3.nupkg.sha512",
+        "swashbuckle.aspnetcore.annotations.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore.Swagger/6.7.3": {
@@ -9932,37 +9978,34 @@
       "Microsoft.EntityFrameworkCore >= 8.0.8",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.8",
       "Microsoft.Extensions.DependencyInjection >= 8.0.0",
+      "Microsoft.OpenApi >= 1.6.21",
       "Oracle.EntityFrameworkCore >= 8.23.50",
-      "Swashbuckle.AspNetCore >= 6.7.3"
+      "Swashbuckle.AspNetCore >= 6.7.3",
+      "Swashbuckle.AspNetCore.Annotations >= 6.7.3",
+      "Swashbuckle.AspNetCore.Swagger >= 6.7.3",
+      "Swashbuckle.AspNetCore.SwaggerGen >= 6.7.3",
+      "Swashbuckle.AspNetCore.SwaggerUI >= 6.7.3"
     ]
   },
   "packageFolders": {
-    "C:\\Softwares\\Nuget": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\fialh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\labsfiap\\lookbook-dotnet-api\\lookbook-dotnet-api.csproj",
+      "projectUniqueName": "C:\\Users\\fialh\\Desktop\\fiap_segundo_semestre\\sprint-3\\dotnet\\lookbook-dotnet-api\\lookbook-dotnet-api.csproj",
       "projectName": "lookbook-dotnet-api",
-      "projectPath": "C:\\Users\\labsfiap\\lookbook-dotnet-api\\lookbook-dotnet-api.csproj",
-      "packagesPath": "C:\\Softwares\\Nuget",
-      "outputPath": "C:\\Users\\labsfiap\\lookbook-dotnet-api\\obj\\",
+      "projectPath": "C:\\Users\\fialh\\Desktop\\fiap_segundo_semestre\\sprint-3\\dotnet\\lookbook-dotnet-api\\lookbook-dotnet-api.csproj",
+      "packagesPath": "C:\\Users\\fialh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\fialh\\Desktop\\fiap_segundo_semestre\\sprint-3\\dotnet\\lookbook-dotnet-api\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "c:\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\fialh\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -10012,11 +10055,31 @@
             "target": "Package",
             "version": "[8.0.0, )"
           },
+          "Microsoft.OpenApi": {
+            "target": "Package",
+            "version": "[1.6.21, )"
+          },
           "Oracle.EntityFrameworkCore": {
             "target": "Package",
             "version": "[8.23.50, )"
           },
           "Swashbuckle.AspNetCore": {
+            "target": "Package",
+            "version": "[6.7.3, )"
+          },
+          "Swashbuckle.AspNetCore.Annotations": {
+            "target": "Package",
+            "version": "[6.7.3, )"
+          },
+          "Swashbuckle.AspNetCore.Swagger": {
+            "target": "Package",
+            "version": "[6.7.3, )"
+          },
+          "Swashbuckle.AspNetCore.SwaggerGen": {
+            "target": "Package",
+            "version": "[6.7.3, )"
+          },
+          "Swashbuckle.AspNetCore.SwaggerUI": {
             "target": "Package",
             "version": "[6.7.3, )"
           }
@@ -10040,7 +10103,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

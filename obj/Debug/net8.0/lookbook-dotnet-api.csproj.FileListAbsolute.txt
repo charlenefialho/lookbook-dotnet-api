@@ -236,3 +236,4 @@ C:\Users\labsfiap\lookbook-dotnet-api\obj\Debug\net8.0\refint\lookbook-dotnet-ap
 C:\Users\labsfiap\lookbook-dotnet-api\obj\Debug\net8.0\lookbook-dotnet-api.pdb
 C:\Users\labsfiap\lookbook-dotnet-api\obj\Debug\net8.0\lookbook-dotnet-api.genruntimeconfig.cache
 C:\Users\labsfiap\lookbook-dotnet-api\obj\Debug\net8.0\ref\lookbook-dotnet-api.dll
+C:\Users\fialh\Desktop\fiap_segundo_semestre\sprint-3\dotnet\lookbook-dotnet-api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Annotations.dll
