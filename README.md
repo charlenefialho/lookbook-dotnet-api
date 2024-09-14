@@ -1,26 +1,26 @@
 # 🎨 lookbook dotnet api
 
-
 ### 📖Descrição do Projeto
+
 A Lookbook API é uma aplicação web desenvolvida com .NET 8.0 para gerenciar lookbooks e produtos, permitindo criar, listar, atualizar e excluir lookbooks e produtos. A API permite a associação de produtos a lookbooks e suporta uma relação N:N, onde um lookbook pode conter vários produtos, e um produto pode estar em vários lookbooks.
 
 A aplicação utiliza um banco de dados Oracle para armazenamento dos dados e segue o padrão Repository para a separação da lógica de acesso aos dados.
 
-
 ### 🏛️ Arquitetura
+
 Este projeto adota uma arquitetura monolítica com camadas bem definidas:
 
 - **Camada de Apresentação (Controllers):** Responsável por expor os endpoints da API e tratar as requisições HTTP. 🌐
 - **Camada de Repositório:** Realiza o acesso aos dados e implementa os métodos de CRUD utilizando o padrão Repository. 📂
 - **Camada de Modelos:** Define as entidades que representam os dados manipulados pela API (como Lookbook e Produto). 📊
 
-
 ### 🔧 Padrões de Design Utilizados
-1. **Repository Pattern:**
-O padrão Repository é usado para isolar a lógica de acesso ao banco de dados da lógica de negócios. Isso facilita a manutenção, testes e futuras alterações no acesso aos dados.
 
+1. **Repository Pattern:**
+   O padrão Repository é usado para isolar a lógica de acesso ao banco de dados da lógica de negócios. Isso facilita a manutenção, testes e futuras alterações no acesso aos dados.
 
 ### 🛠️ Tecnologias Utilizadas
+
 - .NET 8.0: Framework de desenvolvimento.
 - Entity Framework Core: ORM para mapear as entidades com o banco de dados Oracle.
 - Oracle: Banco de dados relacional utilizado para armazenar os dados.
@@ -29,62 +29,66 @@ O padrão Repository é usado para isolar a lógica de acesso ao banco de dados 
 ## Endpoints Disponíveis
 
 ### Lookbooks
+
 - `GET /api/lookbooks` - Retorna todos os lookbooks.
 - `POST /api/lookbooks` - Cria um novo lookbook.
 - `PUT /api/lookbooks/{id}` - Atualiza um lookbook existente.
 - `DELETE /api/lookbooks/{id}` - Exclui um lookbook.
 
 ### Produtos
+
 - `GET /api/produtos` - Retorna todos os produtos.
 - `POST /api/produtos` - Cria um novo produto.
 - `PUT /api/produtos/{id}` - Atualiza um produto existente.
 - `DELETE /api/produtos/{id}` - Exclui um produto.
 
-
 ## Passo a Passo
 
 ### Clone o repositório:
-``` bash
+
+```bash
 git clone https://github.com/seu-usuario/projeto-lookbook-api.git
 cd projeto-lookbook-api
 ```
 
 Instale as dependências: Execute o comando para restaurar os pacotes do .NET:
 
-``` bash
+```bash
 dotnet restore
 ```
 
-### Configurar a Conexão com o Banco de Dados: 
+### Configurar a Conexão com o Banco de Dados:
+
 Atualize a string de conexão para o banco de dados Oracle no arquivo `appsettings.json`:
 
-``` json
+```json
 {
-    "ConnectionStrings": {
-        "DefaultConnection": "User Id=seu_usuario;Password=sua_senha;Data Source=seu_oracle_db"
-    }
+  "ConnectionStrings": {
+    "DefaultConnection": "User Id=seu_usuario;Password=sua_senha;Data Source=seu_oracle_db"
+  }
 }
 ```
 
-Rodar as Migrações: 
+Rodar as Migrações:
 
-``` bash
+```bash
 dotnet ef database update
 ```
 
 Rodar a Aplicação:
 
-``` bash
+```bash
 dotnet run
 ```
 
 Acessar a Documentação acesse a interface do Swagger para testar os endpoints:
 
-``` bash
-https://localhost:<porta>/swagger
+```bash
+https://localhost:<porta>/index.html
 ```
 
 ### 👥 Integrantes do grupo
+
 <table>
   <tr>
         <td align="center">
