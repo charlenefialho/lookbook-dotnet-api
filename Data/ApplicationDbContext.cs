@@ -19,7 +19,7 @@ namespace lookbook_dotnet_api.data
         {
             modelBuilder.Entity<Lookbook>()
                 .HasMany(l => l.Produtos)
-                .WithMany() // Não há mais navegação de volta para Lookbook
+                .WithMany()
                 .UsingEntity(j => j.ToTable("LookbookProduto"));
         }
 
