@@ -2,6 +2,8 @@ using lookbook_dotnet_api.models;
 using lookbook_dotnet_api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using lookbook_dotnet_api.data;
+using Microsoft.EntityFrameworkCore;
 
 namespace lookbook_dotnet_api.Controllers
 {
@@ -14,9 +16,13 @@ namespace lookbook_dotnet_api.Controllers
 
         private readonly ILookbookRepository _lookbookRepository;
 
+        private readonly ApplicationDbContext _context;
 
-        public LookbooksController(IRepository<Lookbook> lookbookRepositoryGeneric, IRepository<Produto> produtoRepository, ILookbookRepository lookbookRepository)
+
+
+        public LookbooksController(IRepository<Lookbook> lookbookRepositoryGeneric, IRepository<Produto> produtoRepository, ILookbookRepository lookbookRepository, ApplicationDbContext context)
         {
+            _context = context;
             _lookbookRepositoryGeneric = lookbookRepositoryGeneric;
             _produtoRepository = produtoRepository;
             _lookbookRepository = lookbookRepository;
@@ -96,29 +102,45 @@ namespace lookbook_dotnet_api.Controllers
             lookbookToUpdate.Descricao = lookbook.Descricao;
             lookbookToUpdate.DataCriacao = lookbook.DataCriacao;
 
-            // Atualiza os produtos do lookbook
-            var produtosNoLookbook = new List<Produto>();
+            // Obtém a lista atual de produtos do lookbook
+            var produtosAtuais = lookbookToUpdate.Produtos.ToList();
+
+            // Obtém a lista de produtos a serem atualizados
+            var produtosParaAtualizar = new List<Produto>();
 
             foreach (var produto in lookbook.Produtos)
             {
                 var produtoExistente = await _produtoRepository.GetByIdAsync(produto.Id);
-
                 if (produtoExistente != null)
                 {
-                    // Produto já existe, associa ao lookbook
-                    produtosNoLookbook.Add(produtoExistente);
+                    produtosParaAtualizar.Add(produtoExistente);
                 }
                 else
                 {
-                    // Produto não existe, adiciona à lista para ser criado
-                    produtosNoLookbook.Add(produto);
+                    produtosParaAtualizar.Add(produto);
                 }
             }
 
-            // Atualiza a lista de produtos do lookbook
-            lookbookToUpdate.Produtos = produtosNoLookbook;
+            // Identifica produtos que precisam ser removidos
+            var produtosParaRemover = produtosAtuais
+                .Where(p => !produtosParaAtualizar.Any(np => np.Id == p.Id))
+                .ToList();
 
+            // Atualiza a lista de produtos do lookbook
+            lookbookToUpdate.Produtos = produtosParaAtualizar;
+
+            // Atualiza o lookbook no banco de dados
             await _lookbookRepositoryGeneric.UpdateAsync(lookbookToUpdate);
+
+            // Remove associações de produtos não associados
+            foreach (var produto in produtosParaRemover)
+            {
+                // Remove a associação na tabela de junção
+                _context.Entry(produto).State = EntityState.Detached;
+            }
+
+            await _context.SaveChangesAsync(); // Salva as mudanças no banco de dados
+
             return NoContent();
         }
 
