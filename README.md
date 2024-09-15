@@ -59,7 +59,11 @@ A API foi implementada seguindo a arquitetura monolítica, com as seguintes cara
 
 ## Endpoints Disponíveis
 
-[Baixar o conjunto de json teste do postman]()
+[Baixar o conjunto de json teste do postman](https://github.com/user-attachments/files/17004516/api-dotnet-lookbook.postman_collection.json)
+
+#### Inserção de conteúdo significativo
+
+- [Está configurado no DataSeeder](https://github.com/charlenefialho/lookbook-dotnet-api/blob/main/Data/DataSeeder.cs)
 
 ### Lookbooks
 
