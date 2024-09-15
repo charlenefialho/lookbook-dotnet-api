@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace lookbook_dotnet_api.models
 {
@@ -18,8 +16,6 @@ namespace lookbook_dotnet_api.models
 
         [Required]
         public string Categoria { get; set; }
-
-        public ICollection<Lookbook> Lookbooks { get; set; } = new List<Lookbook>();
     }
 
 }

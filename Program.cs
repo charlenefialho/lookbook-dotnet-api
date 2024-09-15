@@ -16,6 +16,10 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 // Adiciona os serviços ao contêiner.
 builder.Services.AddControllers();
+/*.AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+});*/
 builder.Services.AddAuthorization(); // Registra o serviço de autorização
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -32,14 +36,14 @@ builder.Services.AddSwaggerGen(c =>
             Description = "API para gerenciar lookbooks e produtos",
             Contact = new OpenApiContact
             {
-                Name = "Seu Nome",
-                Email = "email@dominio.com",
-                Url = new Uri("https://seuwebsite.com"),
+                Name = "LeadTtech",
+                Email = "leadtech@gmail.com",
+                Url = new Uri("https://leadtech.com"),
             },
             License = new OpenApiLicense
             {
                 Name = "Licença de Uso",
-                Url = new Uri("https://seuwebsite.com/licenca"),
+                Url = new Uri("https://leadtech.com/licenca"),
             },
         }
     );

@@ -17,12 +17,12 @@ namespace lookbook_dotnet_api.data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.Entity<Lookbook>()
                 .HasMany(l => l.Produtos)
-                .WithMany(p => p.Lookbooks)
+                .WithMany() // Não há mais navegação de volta para Lookbook
                 .UsingEntity(j => j.ToTable("LookbookProduto"));
         }
+
     }
 
 }
