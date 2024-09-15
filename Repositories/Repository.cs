@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using lookbook_dotnet_api.data;
+using lookbook_dotnet_api.models;
 
 namespace lookbook_dotnet_api.Repositories
 {

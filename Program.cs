@@ -13,6 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Registrar o repositório genérico
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<ILookbookRepository, LookbookRepository>();
 
 // Adiciona os serviços ao contêiner.
 builder.Services.AddControllers();

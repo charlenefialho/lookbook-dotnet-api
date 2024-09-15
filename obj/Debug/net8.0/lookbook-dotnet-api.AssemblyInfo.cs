@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lookbook-dotnet-api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6fac2c2b0885db631b0e075a0921792808ae9a40")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f0b12b0f7daf81ae9aa00e47ce9eaca04598fa4")]
 [assembly: System.Reflection.AssemblyProductAttribute("lookbook-dotnet-api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lookbook-dotnet-api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

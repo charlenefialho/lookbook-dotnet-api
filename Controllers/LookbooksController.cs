@@ -9,13 +9,17 @@ namespace lookbook_dotnet_api.Controllers
     [ApiController]
     public class LookbooksController : ControllerBase
     {
-        private readonly IRepository<Lookbook> _lookbookRepository;
+        private readonly IRepository<Lookbook> _lookbookRepositoryGeneric;
         private readonly IRepository<Produto> _produtoRepository;
 
-        public LookbooksController(IRepository<Lookbook> lookbookRepository, IRepository<Produto> produtoRepository)
+        private readonly ILookbookRepository _lookbookRepository;
+
+
+        public LookbooksController(IRepository<Lookbook> lookbookRepositoryGeneric, IRepository<Produto> produtoRepository, ILookbookRepository lookbookRepository)
         {
-            _lookbookRepository = lookbookRepository;
+            _lookbookRepositoryGeneric = lookbookRepositoryGeneric;
             _produtoRepository = produtoRepository;
+            _lookbookRepository = lookbookRepository;
         }
 
         [HttpGet]
@@ -26,7 +30,7 @@ namespace lookbook_dotnet_api.Controllers
         [SwaggerResponse(200, "Lista de lookbooks retornada com sucesso", typeof(IEnumerable<Lookbook>))]
         public async Task<IActionResult> GetLookbooks()
         {
-            var lookbooks = await _lookbookRepository.GetAllAsync();
+            var lookbooks = await _lookbookRepository.GetLookbooksWithProdutosAsync();
             return Ok(lookbooks);
         }
 
@@ -64,7 +68,7 @@ namespace lookbook_dotnet_api.Controllers
             lookbook.Produtos = produtosNoLookbook;
 
             // Adiciona o lookbook ao banco de dados
-            await _lookbookRepository.AddAsync(lookbook);
+            await _lookbookRepositoryGeneric.AddAsync(lookbook);
 
             return CreatedAtAction(nameof(GetLookbooks), new { id = lookbook.Id }, lookbook);
         }
@@ -83,17 +87,41 @@ namespace lookbook_dotnet_api.Controllers
             if (lookbook == null || id != lookbook.Id)
                 return BadRequest();
 
-            var lookbookToUpdate = await _lookbookRepository.GetByIdAsync(id);
+            var lookbookToUpdate = await _lookbookRepositoryGeneric.GetByIdAsync(id);
             if (lookbookToUpdate == null)
                 return NotFound();
 
+            // Atualiza os dados básicos do lookbook
             lookbookToUpdate.Nome = lookbook.Nome;
             lookbookToUpdate.Descricao = lookbook.Descricao;
             lookbookToUpdate.DataCriacao = lookbook.DataCriacao;
 
-            await _lookbookRepository.UpdateAsync(lookbookToUpdate);
+            // Atualiza os produtos do lookbook
+            var produtosNoLookbook = new List<Produto>();
+
+            foreach (var produto in lookbook.Produtos)
+            {
+                var produtoExistente = await _produtoRepository.GetByIdAsync(produto.Id);
+
+                if (produtoExistente != null)
+                {
+                    // Produto já existe, associa ao lookbook
+                    produtosNoLookbook.Add(produtoExistente);
+                }
+                else
+                {
+                    // Produto não existe, adiciona à lista para ser criado
+                    produtosNoLookbook.Add(produto);
+                }
+            }
+
+            // Atualiza a lista de produtos do lookbook
+            lookbookToUpdate.Produtos = produtosNoLookbook;
+
+            await _lookbookRepositoryGeneric.UpdateAsync(lookbookToUpdate);
             return NoContent();
         }
+
 
         [HttpDelete("{id}")]
         [SwaggerOperation(
@@ -104,11 +132,11 @@ namespace lookbook_dotnet_api.Controllers
         [SwaggerResponse(404, "Lookbook não encontrado")]
         public async Task<IActionResult> DeleteLookbook(int id)
         {
-            var lookbook = await _lookbookRepository.GetByIdAsync(id);
+            var lookbook = await _lookbookRepositoryGeneric.GetByIdAsync(id);
             if (lookbook == null)
                 return NotFound();
 
-            await _lookbookRepository.DeleteAsync(id);
+            await _lookbookRepositoryGeneric.DeleteAsync(id);
             return NoContent();
         }
     }
