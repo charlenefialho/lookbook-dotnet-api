@@ -84,8 +84,8 @@ A API foi implementada seguindo a arquitetura monolítica, com as seguintes cara
 ### Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/projeto-lookbook-api.git
-cd projeto-lookbook-api
+git clone https://github.com/charlenefialho/lookbook-dotnet-api.git
+cd lookbook-dotnet-api
 ```
 
 Instale as dependências: Execute o comando para restaurar os pacotes do .NET:
