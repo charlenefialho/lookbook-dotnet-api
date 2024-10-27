@@ -16,7 +16,14 @@ namespace lookbook_dotnet_api.Services
 
         public async Task<PhotoPage> SearchPhotosAsync(string query)
         {
-            return await _pexelsClient.SearchPhotosAsync(query);
+            try
+            {
+                return await _pexelsClient.SearchPhotosAsync(query);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erro ao buscar fotos", ex);
+            }
         }
     }
 }

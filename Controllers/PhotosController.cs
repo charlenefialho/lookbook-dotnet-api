@@ -16,7 +16,15 @@ public class PhotosController : ControllerBase
     [HttpGet("search")]
     public async Task<IActionResult> SearchPhotos(string query)
     {
-        var result = await _pexelsService.SearchPhotosAsync(query);
-        return Ok(result);
+        try
+        {
+            var result = await _pexelsService.SearchPhotosAsync(query);
+            return Ok(result);
+        }
+        catch (ApplicationException ex)
+        {
+            return StatusCode(500, ex.Message);
+        }
     }
 }
+

@@ -15,6 +15,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Registrar o repositório genérico
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ILookbookRepository, LookbookRepository>();
+builder.Services.AddScoped<ILookbookService, LookbookService>();
+builder.Services.AddScoped<IRepository<Lookbook>, LookbookRepository>();
+builder.Services.AddScoped<IProdutoService, ProdutoService>();
+
 builder.Services.AddSingleton<IPexelsService>(new PexelsService("SbfUmRH9fXDlzPwaLLS6X6nWpZXCPId3gmxMnRwmiUvfBedUdrKDfCPl"));
 
 
