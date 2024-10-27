@@ -37,6 +37,7 @@ namespace lookbook_dotnet_api.data
             }
 
             // Associa produtos a lookbooks
+            /*
             var lookbookVerano = context.Lookbooks.FirstOrDefault(l => l.Nome == "Verão 2024");
             var lookbookOutono = context.Lookbooks.FirstOrDefault(l => l.Nome == "Outono Elegante");
             var produtoCamisaPolo = context.Produtos.FirstOrDefault(p => p.Nome == "Camisa Polo Azul");
@@ -55,7 +56,7 @@ namespace lookbook_dotnet_api.data
             {
                 lookbookOutono.Produtos.Add(produtoCalcaJeans);
                 lookbookOutono.Produtos.Add(produtoBlazerPreto);
-            }
+            }*/
 
             // Salva as associações
             context.SaveChanges();

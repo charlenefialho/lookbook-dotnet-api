@@ -1,6 +1,7 @@
 using lookbook_dotnet_api.data;
 using lookbook_dotnet_api.models;
 using lookbook_dotnet_api.Repositories;
+using lookbook_dotnet_api.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -14,6 +15,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Registrar o repositório genérico
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ILookbookRepository, LookbookRepository>();
+builder.Services.AddSingleton<IPexelsService>(new PexelsService("SbfUmRH9fXDlzPwaLLS6X6nWpZXCPId3gmxMnRwmiUvfBedUdrKDfCPl"));
+
+
 
 // Adiciona os serviços ao contêiner.
 builder.Services.AddControllers();
