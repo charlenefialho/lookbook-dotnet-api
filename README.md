@@ -57,7 +57,7 @@ A API foi implementada seguindo a arquitetura monolítica, com as seguintes cara
    - **Serviços e Repositórios:** A camada de serviços coordena a lógica de negócios e usa repositórios para acessar o banco de dados.
    - **Database Context:** O `ApplicationDbContext` gerencia as entidades e interage com o banco de dados Oracle.
 
-## Endpoints Disponíveis e testes de Sistema via postman
+## 🧪 Endpoints Disponíveis e Testes de Sistema Via Postman
 
 [Baixar o conjunto de json teste de endpoisn e sistema do postman](https://github.com/user-attachments/files/17608778/api-dotnet-lookbook.postman_collection-final.json)
 
@@ -155,7 +155,7 @@ LookbookServiceTests: Testa a lógica da camada de serviço relacionada aos look
 - `UpdateLookbook_ValidLookbook_ShouldReturnNoContent`: Testa se a atualização de um lookbook retorna o resultado correto.
 - `DeleteLookbook_ValidId_ShouldReturnNoContent`: Verifica se a exclusão de um lookbook retorna o resultado esperado.
 
-### Estrutura dos Testes de Integração
+### 🧪 Estrutura dos Testes de Integração
 A classe ProdutoServiceIntegrationTests inclui os seguintes métodos de teste:
 
 `CreateProdutoAsync_ShouldAddProdutoToDatabase`
