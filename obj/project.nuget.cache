@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "tWkWNw7rQKo=",
+  "dgSpecHash": "pcdHA8L3yN0=",
   "success": true,
   "projectFilePath": "C:\\Users\\fialh\\Desktop\\fiap_segundo_semestre\\sprint-4\\dotnet\\lookbook-dotnet-api\\lookbook-dotnet-api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fialh\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+    "C:\\Users\\fialh\\.nuget\\packages\\fluentassertions\\6.12.1\\fluentassertions.6.12.1.nupkg.sha512",
     "C:\\Users\\fialh\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
     "C:\\Users\\fialh\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
     "C:\\Users\\fialh\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",

@@ -770,3 +770,4 @@ C:\Users\fialh\Desktop\fiap_segundo_semestre\sprint-4\dotnet\lookbook-dotnet-api
 C:\Users\fialh\Desktop\fiap_segundo_semestre\sprint-4\dotnet\lookbook-dotnet-api\obj\Debug\net8.0\ref\lookbook-dotnet-api.dll
 C:\Users\fialh\Desktop\fiap_segundo_semestre\sprint-4\dotnet\lookbook-dotnet-api\bin\Debug\net8.0\Lookbook.api.Tests\obj\project.assets.json
 C:\Users\fialh\Desktop\fiap_segundo_semestre\sprint-4\dotnet\lookbook-dotnet-api\bin\Debug\net8.0\Lookbook.api.Tests\obj\Project.WebApp.Tests.csproj.nuget.dgspec.json
+C:\Users\fialh\Desktop\fiap_segundo_semestre\sprint-4\dotnet\lookbook-dotnet-api\bin\Debug\net8.0\FluentAssertions.dll
