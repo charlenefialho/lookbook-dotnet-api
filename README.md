@@ -59,7 +59,7 @@ A API foi implementada seguindo a arquitetura monolítica, com as seguintes cara
 
 ## Endpoints Disponíveis
 
-[Baixar o conjunto de json teste do postman]()
+[Baixar o conjunto de json teste do postman](https://github.com/charlenefialho/lookbook-dotnet-api/blob/main/api-dotnet-lookbook.postman_collection-final)
 
 #### Inserção de conteúdo significativo
 
