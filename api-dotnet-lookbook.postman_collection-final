@@ -1,0 +1,551 @@
+{
+	"info": {
+		"_postman_id": "fcf9b10d-4019-4758-bdba-e84b9ce15ccd",
+		"name": "api-dotnet-lookbook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19973173",
+		"_collection_link": "https://crimson-sunset-723237.postman.co/workspace/New-Team-Workspace~4ed1f29e-3683-4f85-8088-ed690aa8a8f0/collection/19973173-fcf9b10d-4019-4758-bdba-e84b9ce15ccd?action=share&source=collection_link&creator=19973173"
+	},
+	"item": [
+		{
+			"name": "lookbooks",
+			"item": [
+				{
+					"name": "get-lookbooks",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.get(\"variable_key\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('array');\r",
+									"    \r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item).to.have.property('id');\r",
+									"        pm.expect(item).to.have.property('nome');\r",
+									"        pm.expect(item).to.have.property('descricao');\r",
+									"        pm.expect(item).to.have.property('dataCriacao');\r",
+									"        pm.expect(item).to.have.property('produtos');\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"ID is a non-negative integer\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item.id).to.be.a('number').and.to.be.at.least(0);\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5188/api/Lookbooks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5188",
+							"path": [
+								"api",
+								"Lookbooks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-lookbook",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The response body should have the correct schema\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  // Verifica se a resposta é um objeto\r",
+									"  pm.expect(responseData).to.be.an('object');\r",
+									"\r",
+									"  // Verifica a propriedade 'id'\r",
+									"  pm.expect(responseData).to.have.property('id');\r",
+									"  pm.expect(responseData.id).to.be.a('number');\r",
+									"\r",
+									"  // Verifica a propriedade 'nome'\r",
+									"  pm.expect(responseData).to.have.property('nome');\r",
+									"  pm.expect(responseData.nome).to.be.a('string');\r",
+									"\r",
+									"  // Verifica a propriedade 'descricao'\r",
+									"  pm.expect(responseData).to.have.property('descricao');\r",
+									"  pm.expect(responseData.descricao).to.be.a('string');\r",
+									"\r",
+									"  // Verifica a propriedade 'dataCriacao'\r",
+									"  pm.expect(responseData).to.have.property('dataCriacao');\r",
+									"  pm.expect(responseData.dataCriacao).to.be.a('string');\r",
+									"\r",
+									"  // Verifica a propriedade 'produtos'\r",
+									"  pm.expect(responseData).to.have.property('produtos');\r",
+									"  pm.expect(responseData.produtos).to.be.an('array');\r",
+									"  responseData.produtos.forEach(function (item) {\r",
+									"    pm.expect(item).to.be.an('object');\r",
+									"    pm.expect(item).to.have.property('id');\r",
+									"    pm.expect(item.id).to.be.a('number');\r",
+									"    pm.expect(item).to.have.property('nome');\r",
+									"    pm.expect(item.nome).to.be.a('string');\r",
+									"    pm.expect(item).to.have.property('categoria');\r",
+									"    pm.expect(item.categoria).to.be.a('string');\r",
+									"  });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Lookbook de Verão Novo\",\r\n  \"descricao\": \"Coleção de verão 2024\",\r\n  \"dataCriacao\": \"2024-09-10T00:00:00\",\r\n  \"produtos\": [\r\n    {\r\n        \"id\" : \"{id}\",\r\n        \"nome\": \"Camisa nova\",\r\n        \"categoria\": \"Camiseta\"\r\n    }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5188/api/Lookbooks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5188",
+							"path": [
+								"api",
+								"Lookbooks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-lookbook",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"{id}\",\r\n  \"nome\": \"Lookbook de Verão Atualizado\",\r\n  \"descricao\": \"Coleção de verão 2025 atualizado\",\r\n  \"dataCriacao\": \"2024-09-10T00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5188/api/Lookbooks/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5188",
+							"path": [
+								"api",
+								"Lookbooks",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-lookbook",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5188/api/Lookbooks/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5188",
+							"path": [
+								"api",
+								"Lookbooks",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "produtos",
+			"item": [
+				{
+					"name": "get-produtos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response schema for 'Produtos' API endpoint\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('array');\r",
+									"    responseData.forEach(function (produto) {\r",
+									"        pm.expect(produto).to.be.an('object');\r",
+									"        pm.expect(produto.id).to.be.a('number');\r",
+									"        pm.expect(produto.nome).to.be.a('string');\r",
+									"        pm.expect(produto.categoria).to.be.a('string');\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5188/api/Produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5188",
+							"path": [
+								"api",
+								"Produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-produto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"The response body should have the correct schema\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData).to.be.an('object');\r",
+									"  pm.expect(responseData).to.have.property('id');\r",
+									"  pm.expect(responseData).to.have.property('nome');\r",
+									"  pm.expect(responseData).to.have.property('categoria');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Camisa nova\",\r\n  \"categoria\": \"Camiseta\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5188/api/Produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5188",
+							"path": [
+								"api",
+								"Produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-produto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"{id}\",\r\n  \"nome\": \"Camisa C\",\r\n  \"categoria\": \"Camiseta atualizadaa\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5188/api/Produtos/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5188",
+							"path": [
+								"api",
+								"Produtos",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-produto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 204\", function () {\r",
+									"  pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is within an acceptable range\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5188/api/Produtos/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5188",
+							"path": [
+								"api",
+								"Produtos",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "photos",
+			"item": [
+				{
+					"name": "search-photo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is within an acceptable range\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Id, photographer, url, source, medium fields should exist in the response\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData.photos).to.be.an('array');\r",
+									"\r",
+									"  responseData.photos.forEach(function(item) {\r",
+									"    pm.expect(item).to.be.an('object');\r",
+									"    pm.expect(item).to.have.property('id');\r",
+									"    pm.expect(item).to.have.property('photographer');\r",
+									"    pm.expect(item).to.have.property('url');\r",
+									"    pm.expect(item).to.have.property('source');\r",
+									"    pm.expect(item.source).to.have.property('medium');\r",
+									"  });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5188/api/photos/search?query=outfit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5188",
+							"path": [
+								"api",
+								"photos",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "outfit"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
