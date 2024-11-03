@@ -125,6 +125,49 @@ Acessar a Documentação acesse a interface do Swagger para testar os endpoints:
 https://localhost:<porta>/index.html
 ```
 
+## 🧪 Testes Unitários
+Os testes unitários são fundamentais para garantir que a lógica da aplicação funcione como esperado. Para a API Lookbook, foram implementados testes utilizando o framework xUnit e a biblioteca Moq para simulação de dependências.
+
+Estrutura dos Testes
+Os testes foram organizados em três classes principais, cada uma responsável por testar diferentes componentes da API:
+
+LookbookServiceTests: Testa a lógica da camada de serviço relacionada aos lookbooks.
+
+### Métodos de Teste Unitário:
+- `GetAllLookbooksAsync_ShouldReturnAllLookbooks`: Verifica se todos os lookbooks são retornados corretamente.
+- `CreateLookbookAsync_ShouldAddLookbookWithVerifiedProdutos`: Testa a criação de um novo lookbook e a verificação de produtos.
+- `UpdateLookbookAsync_ShouldUpdateLookbookWithVerifiedProdutos`: Assegura que a atualização de um lookbook funcione como esperado.
+- `DeleteLookbookAsync_ShouldCallDeleteMethod`: Testa se o método de exclusão é chamado corretamente.
+- `CreateLookbookAsync_ShouldAddProdutosIfNotExistInRepository`: Verifica se produtos são adicionados corretamente ao criar um lookbook.
+- `ProdutoServiceTests`: Foca na lógica da camada de serviço relacionada aos produtos.
+
+### Métodos de Teste Unitário:
+- `GetAllProdutosAsync_ShouldReturnAllProdutos`: Garante que todos os produtos sejam retornados.
+- `CreateProdutoAsync_ShouldCallAddMethod`: Verifica se o método de adição é chamado ao criar um novo produto.
+- `GetProdutoByIdAsync_ProdutoExists_ShouldReturnProduto`: Testa se um produto existente é retornado corretamente.
+- `GetProdutoByIdAsync_ProdutoNotFound_ShouldReturnNull`: Assegura que, se o produto não existir, null seja retornado.
+- `LookbooksControllerTests`: Testa os controladores da API para assegurar que as requisições HTTP sejam tratadas corretamente.
+
+### Métodos de Teste Unitário:
+- `GetLookbooks_ShouldReturnOkWithLookbooks`: Garante que a chamada para obter lookbooks retorne um resultado OK com os lookbooks.
+- `CreateLookbook_ValidLookbook_ShouldReturnCreatedAtAction`: Verifica se a criação de um lookbook retorna a ação correta.
+- `CreateLookbook_NullLookbook_ShouldReturnBadRequest`: Assegura que uma requisição com lookbook nulo retorne um Bad Request.
+- `UpdateLookbook_ValidLookbook_ShouldReturnNoContent`: Testa se a atualização de um lookbook retorna o resultado correto.
+- `DeleteLookbook_ValidId_ShouldReturnNoContent`: Verifica se a exclusão de um lookbook retorna o resultado esperado.
+
+### Estrutura dos Testes de Integração
+A classe ProdutoServiceIntegrationTests inclui os seguintes métodos de teste:
+
+`CreateProdutoAsync_ShouldAddProdutoToDatabase`
+
+- **Descrição:** Este teste verifica se um novo produto é corretamente adicionado ao banco de dados. Um produto de teste é criado e, em seguida, o método CreateProdutoAsync é chamado para adicioná-lo ao repositório. Após a operação, o teste valida se o produto foi realmente persistido no banco de dados ao consultar o contexto de dados e verificar se o produto existe.
+- **Objetivo:** Garantir que a funcionalidade de criação de produtos funcione corretamente, confirmando que os dados são salvos no banco de dados.
+
+`GetAllProdutosAsync_ShouldReturnProdutosFromDatabase`
+
+- **Descrição:** Este teste assegura que todos os produtos armazenados no banco de dados sejam retornados corretamente pelo serviço. Inicialmente, dois produtos são adicionados diretamente ao contexto de dados, e o método GetAllProdutosAsync é chamado para recuperá-los. O teste verifica se a quantidade de produtos retornados é igual a dois.
+- **Objetivo:** Validar que o método de recuperação de todos os produtos funciona conforme esperado, retornando todos os produtos que foram salvos no banco de dados.
+
 ### 👥 Integrantes do grupo
 
 <table>
