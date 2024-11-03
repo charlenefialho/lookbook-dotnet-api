@@ -57,9 +57,9 @@ A API foi implementada seguindo a arquitetura monolítica, com as seguintes cara
    - **Serviços e Repositórios:** A camada de serviços coordena a lógica de negócios e usa repositórios para acessar o banco de dados.
    - **Database Context:** O `ApplicationDbContext` gerencia as entidades e interage com o banco de dados Oracle.
 
-## Endpoints Disponíveis
+## Endpoints Disponíveis e testes de Sistema via postman
 
-[Baixar o conjunto de json teste do postman](https://github.com/charlenefialho/lookbook-dotnet-api/blob/main/api-dotnet-lookbook.postman_collection-final)
+[Baixar o conjunto de json teste de endpoisn e sistema do postman](https://github.com/user-attachments/files/17608778/api-dotnet-lookbook.postman_collection-final.json)
 
 #### Inserção de conteúdo significativo
 
